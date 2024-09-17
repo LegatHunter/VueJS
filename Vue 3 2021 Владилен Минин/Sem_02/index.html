@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+<div class="container" id="app">
+  <div class="card">
+    <h1>{{tittle}}</h1>
+    <div class="form-control">
+      <input type="text"
+             v-bind:placeholder="placeholderString"
+             v-bind:value="inputValue"
+            v-on:input="inputChange"/>
+    </div>
+    <h2>inputValue: {{inputValue}}</h2>
+    <button class="btn">Добавить</button>
+    <hr />
+  </div>
+</div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src ='app.js'></script>
+  </body>
+</html>

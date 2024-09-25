@@ -1,12 +1,8 @@
-// вы можете как угодно изменять программу и код
-// доавлять любые переменные и модели
-
 const App = {
   data() {
     return {
-      btnVal: 'Вперед',
-      num: 0,
-      activeIndex: 0, // то, что позволяет определить текущий активный шиг
+      activeIndex: 0,
+      isActive: true,
       steps: [
         {title: 'Основы', text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.'},
         {title: 'Компоненты', text: 'Один из самых важных блоков в курсе, где вы узнаете все о компонентах. В блоке мы напишем 2 разных приложения и создадим более 5 различных UI компонентов как в реальной разработке. Блок расскажет про абсолютно все составляющие, которые есть в компонентах: взаимодействие, slots, асинхронные и динамические компоненты и тонна примеров.'},
@@ -18,36 +14,35 @@ const App = {
   },
   methods: {
     prev() {
-      if (this.activeIndex > 0) {
+      if (this.activeIndex !== 0) {
         this.activeIndex--
       }
     },
     reset() {
       this.activeIndex = 0
-      this.num = 0
+      this.isActive = true
     },
     nextOfFinish() {
-      if (this.activeIndex < 4) {
+      if (this.activeIndex !== this.steps.length - 1) {
         this.activeIndex++
+      } else {
+        this.isActive = false
       }
     },
+    setActive(idx) {
+      this.activeIndex = idx
+    }
   },
   computed: {
-    changeBtn () {
-        return this.activeIndex === this.steps.length - 1
-    },
-    // 2. выключена ли кнопка назад
-    disBtn () {
-      if (this.activeIndex === 0) {
-        return  true
-      } if (this.activeIndex > 0) {
-        return false
-      }
-    },
-    infoGen () {
+    activeStep() {
       return this.steps[this.activeIndex]
+    },
+    prevDisabled() {
+      return this.activeIndex === 0
+    },
+    isLastStep() {
+      return this.activeIndex === this.steps.length - 1
     }
-    // 3. находимся ли мы на последнем шаге
   }
 }
 

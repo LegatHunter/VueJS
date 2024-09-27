@@ -1,28 +1,31 @@
 <template>
   <div class="container pt-1">
     <div class="card">
-      <h2>Актуальные новости {{date}}</h2>
+      <h2>Slots</h2>
     </div>
+    <app-block>
+      <p>Этот текст</p>
+      <template v-slot:header><h3>Заголовок</h3></template>
+      <template v-slot:footer>
+        <hr>
+        <small>Это футер</small>
+      </template>
+    </app-block>
 
   </div>
 </template>
 
 <script>
+import AppBlock from "./appBlock.vue";
 
 export default {
-  data() {
-    return {
-      date: new Date().toLocaleDateString(),
-      news: [
-        'Джо байден пдрс',
-        'Vue 3 работает!!!'
-      ],
-      isOpen: false,
+  components: {
+    AppBlock,
   }
-  }
+
 }
 </script>
 
-<style lang='scss'>
+<style lang='sass' scoped>
 
 </style>

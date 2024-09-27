@@ -1,12 +1,12 @@
 <template>
-  <h2>{{title}}</h2>
+  <h2>{{ title }}</h2>
   <hr>
   <p>Hello world</p>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       title: 'Yoooo'
     }
